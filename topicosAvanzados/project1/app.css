@@ -1,0 +1,32 @@
+#titulo_personal{
+    color: rgb(255, 0, 76);
+}
+
+body{
+    background-color: blueviolet;
+}
+
+img{
+    width: 80px;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.subtitulo{
+    font-style: italic;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: blueviolet;
+}
+
+h1{
+    background-color: rgb(152, 151, 255);
+    color: white;
+    font-size: 2em;
+}
+
+p{
+    font-size: larger;
+    color: purple;
+    background-color: rgb(194, 221, 212);
+}
+
