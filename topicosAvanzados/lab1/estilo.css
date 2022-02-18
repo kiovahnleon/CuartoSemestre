@@ -1,0 +1,45 @@
+/* 1. Cambia el color de la página: 3b130e */
+
+/* 2. Al contenedor de la tabla aplicale lo siguiente:
+      2.1 un borde con un grosor de 10px que sea solido y con color 220b08
+      2.2 agrega el color de fondo e14837*/
+
+      
+/* 3. En las celdas deberás colocar las siguientes operaciones:
+      3.1. Coloca el borde de cada celda en 1px, color #943024 y tipo sólido    
+      3.2. Agrega un padding de 20px a toda la celda
+*/
+
+
+/* 3.1 Ve al archivo tabla.html y agrega las celdas que faltan para completar
+la tabla y agrega las materias que llevas en ese horario establecido
+y coloca tu nombre en el h4*/
+/* 4. Cambia el color de los h1 a c74031*/
+
+/* 5. Cambia el color del h4 a 943024 */
+
+body{
+      background-color:#3b130e;
+}
+
+table{
+      border: 10px solid;
+      border-color:#220b08;
+      background-color: #e14837;
+}
+
+td, th{
+      border: 1px solid;
+      border-color: #943024;
+      padding: 20px;
+      text-align: center;
+}
+
+h1{
+      color: #c74031;
+}
+
+
+h4{
+      color: #943024;
+}
