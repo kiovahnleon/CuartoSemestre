@@ -1,7 +1,12 @@
-td{
-    background-color: yellow;
+table, th, td{
+    border: 1px solid black; 
 }
 
-table{
-    color:green;
+td{
+    background-color: rgb(255, 64, 137);
+    color: white;
+}
+
+body{
+    background-color: rgb(230, 230, 230);
 }
