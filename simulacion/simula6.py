@@ -4,15 +4,12 @@
 # valores es a traves de consola
 #
 # Kiovahn Leon
-# Fecha
+# 18/02/2022
 # al20760618.at.ite.dot.edu.dot.mx
 #
 
-from copy import error
 from datetime import datetime
-import sys
-import getopt
-import argparse
+import sys,getopt,argparse
 
 
 class aleatorios:
@@ -109,7 +106,7 @@ class aleatorios:
 
 
 def main():
-    x = aleatorios(sys.argv[1:])
+    x = aleatorios(sys.argv[1:])#Se crea la instancia de la clase aleatorios, es encvia por parametro los argumentos
     for r in x.solucion:
         print(r)
 
