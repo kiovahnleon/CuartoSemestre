@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main(){
+int main(){
     float suma = 1;
     int i = 1;
 
