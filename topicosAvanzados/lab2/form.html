@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        h1{
+            background-color: beige;
+        }
+        ::placeholder{
+            color: orange;
+        }
+        input submit{
+            background-color: orange;
+            color: white;
+        }
+        button{
+            ;
+        }
+    </style>
+
+    <!-- Contenedor -->
+    <div>
+        <img width="100" height="auto" src="images/windows.jpeg" alt="windows logo">
+        
+        <h1>FORMULARIO PRINCIPAL</h1>
+
+        <h3>Busqueda en Google</h3>
+        <form action="https://www.google.com/search" method="get">
+            <label for="q"></label>
+            <input type="text" name="q" placeholder="busqueda"
+                autocomplete="off">
+            <input type="submit"><br>
+            
+            <!-- <label for="password">Password:</label>
+            <input type="password" name="password" ><br>
+
+            <label for="comentarios">Comentarios:</label><br>
+            <textarea name="comentarios" cols="60" rows="4"></textarea><br> -->
+
+        </form>
+
+        <h3>Busqueda en Reddit</h3>
+        <form action="https://www.reddit.com/search/">
+            <label for="q"></label>
+            <input type="text" name="q" placeholder="busqueda" 
+                autocomplete="off">
+            <input type="submit">
+        </form>
+
+        <h3>Formulario Personal</h3>
+        <form action="">
+            <fieldset>
+                <legend>Info Personal</legend>
+                <label for="username">Como te llamas?</label>
+                <input type="text" name="username"><br><br>
+
+                <label for="age">Que edad tienes?</label>
+                <input type="text" name="age"><br><br>
+
+                <label for="color">Cual es tu color favorito?</label><br>
+                <input type="radio" name="color" value="rojo">Rojo
+                <input type="radio" name="color" value="magenta">Magenta
+                <input type="radio" name="color" value="cyan">Cyan
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Escuela</legend>
+                <label for="school">Como se llama tu escuela?</label>
+                <input type="text" name="school"><br><br>
+
+                <label for="grade">Que estudias?</label>
+                <input type="text" name="grade"><br><br>
+
+                <label for="grade">Materia fav?</label>
+                <input type="checkbox" name="materia"> Automatas
+                <input type="checkbox" name="materia"> Prog movil
+                <input type="checkbox" name="materia"> Topicos
+            </fieldset>
+
+
+        </form>
+
+        <!--Con a creo los hyperlinks-->
+        <a href="registro.html">Ir a registro</a>
+    </div>
+</body>
+</html>
