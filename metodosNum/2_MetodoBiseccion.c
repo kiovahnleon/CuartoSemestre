@@ -4,7 +4,7 @@
 int main()
 {
     float error;
-    float a = 0, b, c = 2;
+    float a = 0, b, c = 1;
     float fa, fb, fc;
 
     error = (c-a)/2;
@@ -12,11 +12,11 @@ int main()
     printf("%f", b);
     printf("\n");
 
-    while(error >=0.000001){
+    while(error >=0.001){
 
-        fa= pow(M_E,a)-2;
-        fb= pow(M_E,b)-2;
-        fc= pow(M_E,c)-2;
+        fa= a*sin(a)-0.1;
+        fb= b*sin(b)-0.1;
+        fc= c*sin(c)-0.1;
 
         if(fb>=0&&fa<0||fb<0&&fa>=0){
             a=a;
@@ -31,10 +31,10 @@ int main()
 
         error = error/2;
 
-        printf("%f", b);
+        printf("La raiz es: %f", b);
         printf("\n");
 
-        printf("El resultado es: %f", fb);
+        printf("f(b): %f", fb);
         printf("\n");
     }
 
