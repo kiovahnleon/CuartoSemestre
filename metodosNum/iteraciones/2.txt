@@ -1,0 +1,10 @@
+x(1)=0;
+n=7;
+for i=2:n
+    x(i)= calcf (x(i-1));
+    disp(x(i));
+end
+
+function y= calcf (x)
+    y=tan(0.1*x)-9.2*exp(-x);
+end
