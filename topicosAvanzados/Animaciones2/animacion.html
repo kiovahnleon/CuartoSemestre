@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <style>
+        body{
+            background-color: #fcd04b;
+            font-family: Roboto;
+            color: white;
+        }
+
+        .btn{
+            outline: 0px;
+            border: 0px;
+            cursor: pointer;
+            display: block;
+            position: relative;
+            background-color: #fcad26;
+            font-size: 16px;
+            font-weight: 300;
+            color: white;
+            padding: 25px 80px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: 0px 6px #efa424;
+        }
+
+        .btn:hover{
+            box-shadow: 0px 4px #efa424;
+            top: 2px;
+        }
+
+        .btn:active{
+            box-shadow: none;
+            top: 6px;
+        }
+
+        h1{
+            text-align: center;
+            font-weight: 300px;
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <h1>Button does nothing</h1>
+    <h1>This button does nothing</h1>
     <button class="btn">Click me</button>
 </body>
 </html>
