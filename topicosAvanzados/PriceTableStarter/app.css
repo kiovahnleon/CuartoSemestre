@@ -1,0 +1,100 @@
+/* ENTRA A LA PÁGINA https://meyerweb.com/eric/tools/css/reset/ Y RESETEA TODO TU ARCHIVO CSS */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/************ COLOCA DEBAJO DE CADA INSTRUCCIÓN EL ESTILO APLICADO ************/
+/* APLICAR A TODO EL DOCUMENTO (html) LO SIGUIENTE
+    1. LA TIPOGRAFÍA QUE TIENE EMBEDIDA
+    2. A LA PROPIEDAD box-sizing APLICARLE border-box*/
+
+html{
+    font-family: Open Sans;
+    box-sizing: border-box;
+}
+
+/* COLOCAR EN EL BODY LAS SIGUIENTES PROPIEDADES
+    1. EL COLOR DE FONDO #60a9ff
+    2. APLICAR UN FLEX
+    3. COLOCAR TODOS LOS ELEMENTOS AL CENTRO
+    4. ALINEAR LOS ELEMENTOS AL CENTRO
+    5. COLOCAR UN min-height DE 100vh*/
+
+
+body{
+    background-color: #60a9ff;
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+}
+    
+/* APLICAR A LA CLASE panel LAS SIGUIENTES PROPIEDADES
+    1. COLOR DE FONDO BLANCO
+    2. ESQUINAS REDONDAS DE 10PX
+    3. COLOCAR UN PADDING ARRIBA-ABAJO DE 15PX E IZQ-DER 25PX
+    4. HACER QUE EL ABARQUE TODO EL ANCHO DE PANTALLA
+    5. COLOCAR UN MÁXIMO DE ANCHO DE 960PX
+    6. APLICAR UN FLEX
+    7. COLOCAR LOS ELEMENTOS EN FORMA DE COLUMNA
+    8. ALINEA EL TEXTO AL CENTRO
+    9. COLOCA TODAS LAS LETRAS EN MAYÚSCULA
+    */
+
+.panel{
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px 25px 15px 25px;
+    width:100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+}
