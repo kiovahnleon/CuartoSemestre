@@ -11,7 +11,7 @@ public class Main {
         double a[] = new double[n];
         a[0] = x0;
         for (int i = 1; i < a.length; i++) {
-            a[i] = a[i-1] - (f(a[i-1]) / fprima(a[i-1]));
+            a[i] = a[i-1] - (f(a[i-1]) / F_(a[i-1]));
             System.out.println(a[i]);
         }
 
@@ -21,7 +21,7 @@ public class Main {
         return(Math.cos(x)*Math.cosh(x)+1);
     }
 
-    public static double fprima(double x){
+    public static double F_(double x){
         return(Math.cos(x)*Math.sinh(x)-Math.sin(x)*Math.cosh(x));
     }
 }

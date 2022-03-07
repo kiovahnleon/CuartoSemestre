@@ -1,3 +1,4 @@
+package error;
 public class error {
     public static void main(String[] args) {
         float suma = 1;

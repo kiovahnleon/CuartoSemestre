@@ -1,3 +1,4 @@
+package error;
 public class epsilon {
 public static void main(String[] args) {
     double epsilon = 1;
