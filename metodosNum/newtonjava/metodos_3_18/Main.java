@@ -6,7 +6,7 @@ import java.math.*;
 public class Main {
     public static void main(String[] args) {
         int n = 10; //Determina el numero de iteraciones, mas iteraciones = mayor exactitud
-        double x0 = 4; // Valores estimados = 4,7,10
+        double x0 = 10; // Valores estimados = 4,7,10
 
         double a[] = new double[n];
         a[0] = x0;
