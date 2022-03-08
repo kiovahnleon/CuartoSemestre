@@ -9,8 +9,10 @@
 # al20760618.at.ite.dot.edu.dot.mx
 #
 
+import sys
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 from turtle import width
 
 class tarjeta():
@@ -51,8 +53,69 @@ class tarjeta():
         ###############
         botones=Frame(root)
         botones.grid(column=0,row=2,padx=(50,50),pady=(10,10))
-        ttk.Button(botones,text="Comprar").grid(row=4,column=0)
+        ttk.Button(botones,text="Comprar",command=lambda:tarjeta.verificar(self)).grid(row=4,column=0)
         ttk.Button(botones,text="Salir",command=root.quit).grid(row=4,column=1)
+    def verificar(self):
+        #validacion Campo 1
+        try:
+            dato1=int(self.campo1.get())
+            if dato1<=0:
+                messagebox.showerror("Error", "La lectura del primer campo es incorrecta")
+                sys.exit(2)
+            if dato1>=10000:
+                messagebox.showerror("Error", "La lectura del primer campo es incorrecta")
+                sys.exit(2)
+        except ValueError:
+            messagebox.showerror("Error","Se requiere del valor de los cuatro campos")
+            sys.exit(2)
+        #validacion Campo 2
+        try:
+            dato2=int(self.campo2.get())
+            if dato2<=0:
+                messagebox.showerror("Error", "La lectura del segundo campo es incorrecta")
+                sys.exit(2)
+            if dato2>=10000:
+                messagebox.showerror("Error", "La lectura del segundo campo es incorrecta")
+                sys.exit(2)
+        except ValueError:
+            messagebox.showerror("Error","Se requiere del valor de los cuatro campos")
+            sys.exit(2)
+        #validacion Campo 3
+        try:
+            dato3=int(self.campo3.get())
+            if dato3<=0:
+                messagebox.showerror("Error", "La lectura del tercer campo es incorrecta")
+                sys.exit(2)
+            if dato3>=10000:
+                messagebox.showerror("Error", "La lectura del tercer campo es incorrecta")
+                sys.exit(2)
+        except ValueError:
+            messagebox.showerror("Error","Se requiere del valor de los cuatro campos")
+            sys.exit(2)
+        #validacion Campo 4
+        try:
+            dato1=int(self.campo1.get())
+            if dato1<=0:
+                messagebox.showerror("Error", "La lectura del cuarto campo es incorrecta")
+                sys.exit(2)
+            if dato1>=10000:
+                messagebox.showerror("Error", "La lectura del cuarto campo es incorrecta")
+                sys.exit(2)
+        except ValueError:
+            messagebox.showerror("Error","Se requiere del valor de los cuatro campos")
+            sys.exit(2)
+        #validacion CV
+        try:
+            codigo_verificacion=int(self.cv.get())
+            if codigo_verificacion<=0:
+                messagebox.showerror("Error", "La lectura del CV es incorrecta")
+                sys.exit(2)
+            if codigo_verificacion>=10000:
+                messagebox.showerror("Error", "La lectura del CV es incorrecta")
+                sys.exit(2)
+        except ValueError:
+            messagebox.showerror("Error","Se requiere tengs un codigo de verificacion")
+            sys.exit(2)
 
 
 
