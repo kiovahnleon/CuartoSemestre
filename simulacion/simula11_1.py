@@ -9,6 +9,7 @@
 # al20760618.at.ite.dot.edu.dot.mx
 #
 
+from cgitb import text
 import sys, math
 from operaciones import datos_tarjeta
 from tkinter import *
@@ -47,8 +48,26 @@ class tarjeta():
         #Seccion para el campo de verificacion
         ttk.Label(vtarjeta,text="Indique su codigo de verificacion (CV)",justify=LEFT).grid(sticky=W, column=0, row=1)
 
+        #CV
         self.cv=Entry(datos_tarjeta,width=4)
         self.cv.grid(column=0,row=1)
+        ###############
+        #Fecha de vencimiento tarjeta
+        ###############
+        vencimiento=Frame(root)
+        vencimiento.grid(column=0,row=1,padx=(50,50),pady=(10,10))
+        ttk.Label(vencimiento, text="Indique la fecha de vencimiento",justify=LEFT).grid(sticky=W,column=0,row=0)
+        #Datos para el anio
+        ttk.Label(vencimiento,text="Anio",justify=LEFT).grid(column=0,row=1)
+        self.anio=Entry(vencimiento,width=4)
+        self.anio.grid(column=1,row=1)
+        #Datos para el mes
+        ttk.Label(vencimiento,text="Mes",justify=LEFT).grid(column=2,row=1)
+        opciones=ttk.Combobox(vencimiento,width=10,state="readonly")
+        opciones["values"]=("JAN","FEB","MAR","JUN","JUL","AUG","SEP","OCT","NOV","DEC")
+        opciones.grid(column=3,row=1)
+        opciones.current(1)
+
         ###############
         #Boton
         ###############

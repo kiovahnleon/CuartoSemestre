@@ -1,5 +1,5 @@
 #/usr/bin/python
-#-"- coding: uf-8 -"-
+#-"- coding: utf-8 -"-
 # Se declara las funcione auxiliares para los ejercicios
 #
 # Kiovahn Leon
@@ -28,3 +28,21 @@ def generar(cantidad):
         if i > 0: #Se elimnima la semilla del arrelgo x para asi obtener los aleatorios
             y.append(f/m)
     return y
+
+#funcion que devolvera el dato de la tarjeta de debito
+def datos_tarjeta(semilla):
+    t=1233
+    bandera=-1
+    a=8*t+bandera*3
+    m=2**16
+    x=[]
+    x.append(semilla)
+    for i in range(1,10):
+        n=(a*x[i-1]%m)
+        x.append(n)
+    for j in range(len(x)):
+        #convertir a texto
+        dato=str(x[j])
+        #se extraen los cuatro caracteres
+        x[j]=dato[:4]
+    return(x)
