@@ -13,12 +13,12 @@ import sys,getopt,argparse
 class aleatorios:
     def __init__(self,datos):
         self.datos = datos
-        self.t=4219  #Valor por omisión en caso de no ser declarado
-        self.bandera=1  # Valor por omisión en caso de no ser declarado
-        self.m=575629
+        self.t=1168  #Valor por omisión en caso de no ser declarado
+        self.bandera=-1  # Valor por omisión en caso de no ser declarado
+        self.m=19191916
         #2**31-1
         # Valor por omisión en caso de no ser declarado
-        self.cantidad=15  #Cantidad de núm. aleatorios a generar por omisión
+        self.cantidad=5  #Cantidad de núm. aleatorios a generar por omisión
         try:
             opts,args=getopt.getopt(self.datos,"hn:",["help","cuantos="])
         except getopt.error:
@@ -57,7 +57,7 @@ class aleatorios:
         a=8*self.t+self.bandera*3
         ahora=datetime.now()
         #semilla=ahora.microsecond
-        semilla=23456
+        semilla=333519
         # Se declara un arreglo
         x=[]
         # Se inicia el arreglo
@@ -74,7 +74,7 @@ class aleatorios:
 def main():
     x = aleatorios(sys.argv[1:])
     for r in x.solucion:
-        print('{:0.9f}'.format(r))
+        print('{:0.5f}'.format(r))
 
 if __name__ == '__main__':
     main()

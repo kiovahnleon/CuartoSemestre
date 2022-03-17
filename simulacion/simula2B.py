@@ -8,7 +8,7 @@
 #
 t=1168
 bandera=-1
-a=t+bandera*3
+a=8*t+bandera*3
 semilla=333519
 m=19191916
 #se declara el arreglo
@@ -16,7 +16,7 @@ x=[]
 #se inicia el arreglo
 x.append(semilla)
 #comienza el ciclo
-for i in range(1,11):
+for i in range(1,6):
     f=(a*x[i-1]+bandera)%m
     x.append(f/m)
 for r in x:

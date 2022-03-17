@@ -17,7 +17,7 @@ class aleatorios:
         self.t=1168 #Valor por omisión en caso de no ser declarado
         self.bandera=1 #Valor por omisión en caso de no ser declarado
         self.m=19191916 #Valor por omisión en caso de no ser declarado
-        self.cantidad=4 #Cantidad de aleatorios a generar por omisión
+        self.cantidad=5 #Cantidad de aleatorios a generar por omisión
         self.decimales=5 #Numero de decimales por redondear, valor por omisión
         try:
             opts,args=getopt.getopt(self.datos,"hv:V:n:d:",["help","vminima=","vmaxima=","cuantos=","decimales="])
@@ -86,8 +86,8 @@ class aleatorios:
 #Método que genera los números pseudo aleatorios
     def generar(self):
         a=8*self.t+self.bandera*3
-        ahora=datetime.now()
-        semilla=ahora.microsecond
+        # ahora=datetime.now()
+        semilla=333519
         # Se declara el arreglo inicial
         x=[]
         # Se declara el arreglo donde estarán los aleatorios
