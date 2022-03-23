@@ -18,7 +18,7 @@ class aleatorios:
         self.bandera=1 #Valor por omisión en caso de no ser declarado
         self.m=19191916 #Valor por omisión en caso de no ser declarado
         self.cantidad=5 #Cantidad de aleatorios a generar por omisión
-        self.decimales=5 #Numero de decimales por redondear, valor por omisión
+        self.decimales=3 #Numero de decimales por redondear, valor por omisión
         try:
             opts,args=getopt.getopt(self.datos,"hv:V:n:d:",["help","vminima=","vmaxima=","cuantos=","decimales="])
         except getopt.error:

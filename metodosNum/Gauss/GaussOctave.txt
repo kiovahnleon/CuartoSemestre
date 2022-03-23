@@ -1,0 +1,3 @@
+DOFOR k=1, n-1
+    DOFOR i=k+1 , n
+        factor = 

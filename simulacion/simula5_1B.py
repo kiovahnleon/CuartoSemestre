@@ -14,7 +14,7 @@ class aleatorios:
     def __init__(self,datos):
         self.datos = datos
         self.t=1168  #Valor por omisión en caso de no ser declarado
-        self.bandera=-1  # Valor por omisión en caso de no ser declarado
+        self.bandera=1  # Valor por omisión en caso de no ser declarado
         self.m=19191916
         #2**31-1
         # Valor por omisión en caso de no ser declarado

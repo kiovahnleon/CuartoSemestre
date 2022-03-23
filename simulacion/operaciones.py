@@ -8,14 +8,19 @@
 #
 from datetime import datetime
 
+import random
+import numpy as np
+import scipy.stats
+
 #Metodo que genera los numeros pseudo aleatorios
 def generar(cantidad):
-    t=4219 #Valor por omision en caso de no ser declarado
+    t=1168 #Valor por omision en caso de no ser declarado
     bandera=1 #Valor por omisiion en caso de no ser declarado
-    m=2**31-1 #valor por omision en caso de no ser declarado
+    m=19191916 #valor por omision en caso de no ser declarado
     a=8*t+bandera*3
-    ahora=datetime.now()
-    semilla=ahora.microsecond
+    #ahora=datetime.now()
+    semilla=333519
+    #ahora.microsecond
     #Se delcara el arreglo inicial 
     x=[]
     #Se declara el arreglo donde estaran los aleatorios
@@ -25,6 +30,7 @@ def generar(cantidad):
     #comienza el ciclo
     for i in range(cantidad+1):
         f=(a*x[i])%m
+        x.append(f)
         if i > 0: #Se elimnima la semilla del arrelgo x para asi obtener los aleatorios
             y.append(f/m)
     return y
@@ -46,3 +52,9 @@ def datos_tarjeta(semilla):
         #se extraen los cuatro caracteres
         x[j]=dato[:4]
     return(x)
+
+def intervalo_confianza(data,confianza=0.95):
+    n=len(data)
+    m,se=np.mean(data), scipy.stats.sem(data)
+    h=se*scipy.stats.t.ppf((1+confianza)/2,2-1)
+    return m,m-h,m+h
