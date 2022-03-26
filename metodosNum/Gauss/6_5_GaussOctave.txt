@@ -2,19 +2,23 @@ x = [ 2 3 1 ; 1.001 1.5 0]; %La matriz del sistema que queremos resolver
 
 gauss(x)
 
-function [y] = gauss(x)    
+function [y] = gauss(x) 
+
+    % El primer ciclo con "n" controla los renglones de la matriz
     for n = 1:(length(x)-1)
-        % Step 1: make the row N's Nth term 1 by dividing 
-        % the whole row by it
+
+        %El termino n del renglon de N se hace 1 dividiendo el renglon por el
         A = x(n,:);
         A = A/A(n);
         x(n,:) = A;
         
-        % Step 2: for every other row add to it -1 * that rows Nth term *
-        % the Nth row
+        % Este ciclo usa la variable k y controla los renglones en los que se realizaran las operaciones respecto al renglon n
         for k = 1:(length(x)-1)
+            %se limita que esta operacion sea realizada respecto al renglon n
             if n~=k
+                %se hace la multiplicacion por el valor para luego en la suma se obtenga 0 en la columna 1 de la fila de coef que ya estan en cero
                 x(k,:) = A*(-1*x(k,n)) + x(k,:);
+                % muestra la solucion
                 disp(x)
                 fprintf('\n');
             end

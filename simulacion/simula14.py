@@ -26,7 +26,7 @@ if __name__=='__main__':
             pagos.append(5000)
 
     data=[] #Arreglo donde estará la información que se manda a archivo
-    header=['Num','Pago']
+    header=['Pago']
     for i in range(len(pagos)):
         data.append([i+1,pagos[i]])
     with open('salidapagos.csv','w',encoding='UTF-8',newline='') as f:
