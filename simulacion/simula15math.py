@@ -9,8 +9,6 @@
 #
 
 import math, random, csv
-import random
-import csv
 
 
 if __name__ == '__main__':
@@ -20,10 +18,10 @@ if __name__ == '__main__':
         t = round(-2.381 * math.log(1-rnd),3)
         pagos.append(t)
     data = []  # Arreglo donde estará la información que se manda a archivo
-    header = ['Num', 'Pago']
+    header = ['Pago']
     for i in range(len(pagos)):
         data.append([pagos[i]])
-    with open('salida3.csv', 'w', encoding='UTF-8', newline='') as f:
+    with open('salida15math.csv', 'w', encoding='UTF-8', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(header)
         writer.writerows(data)
