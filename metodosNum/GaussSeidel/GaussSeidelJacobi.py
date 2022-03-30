@@ -22,8 +22,8 @@ condition = True
 
 while condition:
     x1 = f1(x0,y0,z0)
-    y1 = f2(x1,y0,z0)
-    z1 = f3(x1,y1,z0)
+    y1 = f2(x0,y0,z0)
+    z1 = f3(x0,y0,z0)
     print('%d\t%0.4f\t%0.4f\t%0.4f\n' %(count, x1,y1,z1))
     e1 = abs(x0-x1);
     e2 = abs(y0-y1);
