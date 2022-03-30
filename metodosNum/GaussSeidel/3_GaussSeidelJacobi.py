@@ -25,9 +25,9 @@ while condition:
     y1 = f2(x0,y0,z0)
     z1 = f3(x0,y0,z0)
     print('%d\t%0.4f\t%0.4f\t%0.4f\n' %(count, x1,y1,z1))
-    e1 = abs(x0-x1);
-    e2 = abs(y0-y1);
-    e3 = abs(z0-z1);
+    e1 = abs((x0-x1)/x0);
+    e2 = abs((y0-y1)/y0);
+    e3 = abs((z0-z1)/z0);
     
     count += 1
     x0 = x1
