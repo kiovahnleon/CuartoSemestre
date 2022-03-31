@@ -46,3 +46,4 @@ while condicion:
 
 #imprimimos la solucion
 print('\nSolucion: x=%0.4f, y=%0.4f, z = %0.4f\n'% (x1,y1,z1))
+print('\nErrores: e1:%0.4f, e2:%0.4f, e3:%0.4f\n'%(e1,e2,e3))
