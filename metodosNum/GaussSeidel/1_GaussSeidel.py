@@ -34,6 +34,6 @@ while condition:
     y0 = y1
     z0 = z1
     
-    condition = e1>e and e2>e and e3>e
+    condition = e1>e or e2>e or e3>e
 
 print('\nSolucion: x=%0.3f, y=%0.3f, z = %0.3f\n'% (x1,y1,z1))
