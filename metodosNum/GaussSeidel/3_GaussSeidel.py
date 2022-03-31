@@ -36,4 +36,4 @@ while condition:
     
     condition = e1>e or e2>e or e3>e
 
-print('\nSolucion: x=%0.3f, y=%0.3f, z = %0.3f\n'% (x1,y1,z1))
+print('\nSolucion: x=%0.4f, y=%0.4f, z = %0.4f\n'% (x1,y1,z1))

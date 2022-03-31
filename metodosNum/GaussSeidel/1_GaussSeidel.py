@@ -16,7 +16,7 @@ count = 1
 e = float(input('Ingresa Error Tolerable: '))
 
 # Implementation of Gauss Seidel Iteration
-print('\nCount\tx\ty\tz\n')
+print('\nIteracion\tx\ty\tz\n')
 
 condition = True
 
@@ -25,9 +25,9 @@ while condition:
     y1 = f2(x1,y0,z0)
     z1 = f3(x1,y1,z0)
     print('%d\t%0.4f\t%0.4f\t%0.4f\n' %(count, x1,y1,z1))
-    e1 = abs(x0-x1);
-    e2 = abs(y0-y1);
-    e3 = abs(z0-z1);
+    e1 = abs((x1-x0)/x1);
+    e2 = abs((y1-y0)/y1);
+    e3 = abs((z1-z0)/z1);
     
     count += 1
     x0 = x1

@@ -1,6 +1,7 @@
 # Gauss Seidel 
 
 #Definicion de las ecuaciones en la forma de la diagonal dominante
+#Aqui es donde vamos a introducir las ecuaciones depejadas de nuestras matrices
 f1 = lambda x,y,z: (3 + y + z)/6
 f2 = lambda x,y,z: (40 - 6*x - z)/9
 f3 = lambda x,y,z: (50 + 3*x - y)/-12
@@ -15,12 +16,13 @@ count = 1 #contador para mostrar las iteraciones
 e = float(input('Ingresa Error Tolerable: '))
 
 #impresion del renglon titulo
-print('\Contador\tx\ty\tz\n')
+print('\nIteraciones\tx\ty\tz\n')
 
-condition = True
+#iniciamos la condicion en true para que pueda entrar al ciclo
+condicion = True
 
 #ciclo while
-while condition:
+while condicion:
     #evaluamos las 3 ecuaciones
     x1 = f1(x0,y0,z0)
     y1 = f2(x1,y0,z0)
@@ -30,7 +32,7 @@ while condition:
     e1 = abs((x1-x0)/x1);
     e2 = abs((y1-y0)/y1);
     e3 = abs((z1-z0)/z1);
-    #x1 es equivalente a x_i, x0 es equivalente a x_i-1
+    #x1 es equivalente a x_i, x0 es equivalente a x_i-1 en los ejercicios de clase
     
     count += 1 #al contador se le suma 1
     #asignamos el valor de las variables al la variable anterior 
@@ -40,7 +42,7 @@ while condition:
     
     #mientras los errores de las 3 variables sean mayor al valor dado
     #el ciclo se seguira repitiendo
-    condition = e1>e and e2>e and e3>e
+    condicion = e1>e or e2>e or e3>e
 
 #imprimimos la solucion
-print('\nSolucion: x=%0.3f, y=%0.3f, z = %0.3f\n'% (x1,y1,z1))
+print('\nSolucion: x=%0.4f, y=%0.4f, z = %0.4f\n'% (x1,y1,z1))
