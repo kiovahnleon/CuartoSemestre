@@ -25,15 +25,15 @@ while condition:
     y1 = f2(x1,y0,z0)
     z1 = f3(x1,y1,z0)
     print('%d\t%0.4f\t%0.4f\t%0.4f\n' %(count, x1,y1,z1))
-    e1 = abs(x0-x1);
-    e2 = abs(y0-y1);
-    e3 = abs(z0-z1);
+    e1 = abs((x1-x0)/x1)
+    e2 = abs((y1-y0)/y1)
+    e3 = abs((z1-z0)/z1)
     
     count += 1
     x0 = x1
     y0 = y1
     z0 = z1
     
-    condition = e1>e and e2>e and e3>e
+    condition = e1>e or e2>e or e3>e
 
 print('\nSolucion: x=%0.3f, y=%0.3f, z = %0.3f\n'% (x1,y1,z1))
