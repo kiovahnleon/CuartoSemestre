@@ -1,0 +1,24 @@
+{
+    "empleados":[
+        {
+            "id":1,
+            "nombre":"Kiovahn Leon",
+            "puesto":"Estudiante"
+        },
+        {
+            "id":2,
+            "nombre":"Juan Perez",
+            "puesto":"Estudiante"
+        },
+        {
+            "id":3,
+            "nombre":"Andrea Carrasco",
+            "puesto":"Asistente de RH"
+        },
+        {
+            "id":4,
+            "nombre":"Martin Tirado",
+            "puesto":"Jefe de Laboratorios"
+        }
+    ]
+}
