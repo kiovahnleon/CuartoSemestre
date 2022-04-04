@@ -10,7 +10,7 @@
 #
 
 import sys, math
-from operaciones import datos_tarjeta
+from operacionesEV import datos_tarjeta
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
