@@ -16,7 +16,7 @@ count = 1
 e = float(input('Ingresa Error Tolerable: '))
 
 # Implementation of Gauss Seidel Iteration
-print('\nCount\tx\ty\tz\n')
+print('\nIteracion\tx\ty\tz\n')
 
 condition = True
 
