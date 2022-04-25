@@ -32,3 +32,4 @@ public class TareaImprimir implements Runnable {
         System.out.printf("%s termino su inactividad\n", nombreTarea);
     } // fin del método run
 } // fin de la clase TareaImprimir
+  // xd
