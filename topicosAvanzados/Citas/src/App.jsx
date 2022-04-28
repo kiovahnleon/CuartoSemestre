@@ -5,7 +5,7 @@ import Listado from "./components/Listado"
 function App() {
 
   return (
-    <div>
+    <div className="text-slate-800">
       <Cabecera />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Formulario />
