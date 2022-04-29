@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="text-slate-800">
       <Cabecera />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className=" mt-12 md:flex">
         <Formulario />
         <Listado />
       </div>
