@@ -3,14 +3,16 @@
 #
 # Ejercicio de Declaracion a traves del teclado (o shell)
 #
-# Kiovahn Leon
+# Nombre
 # April/26/22
-# al20760444.at.ite.dot.edu.dot.mx
+# al.at.ite.dot.edu.dot.mx
 
 import sys
 import csv
 import random
 import time
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 class Aleatorios(object):
@@ -59,7 +61,7 @@ class Opciones(Aleatorios):
         inicio = time.perf_counter_ns()
         solucion3 = []
         for i in range(self.cantidad):
-            valor = round(random.random(), 2)
+            valor = np.random.rand()
             if valor <= 0.006:
                 x = 20.78
             elif valor >= 0.007 and valor <= 0.067:
@@ -82,11 +84,12 @@ class Opciones(Aleatorios):
 
 def main(**kwargs):
     cantidad = 30
+
     x = Opciones(cantidad, **kwargs)
     valores1, tiempo1 = x.opcion1()
     valores2, tiempo2 = x.opcion2()
     valores3, tiempo3 = x.opcion3()
-    print("El tiempo en realizar el metodo1 fue {}, metodo 2: {} y metodo 3: {}".format(
+    print("El tiempo en realizar el metodo1 fue {}, metodo 2: {} , metodo 3: {}".format(
         tiempo1, tiempo2, tiempo3))
     data = []  # Arreglo donde estara la informacion que se manda a archivo
     header = ['No', 'Metodo 1', 'Metodo 2', 'Metodo 3']
@@ -97,6 +100,14 @@ def main(**kwargs):
         writer.writerow(header)
         writer.writerows(data)
     print("El archivo ha sido generado")
+
+    # Boxplot
+    data = valores1, valores2, valores3
+    fig = plt.figure(figsize=(10, 7))
+    # Creating plot
+    plt.boxplot(data)
+    # show plot
+    plt.show()
 
 
 if __name__ == '__main__':
