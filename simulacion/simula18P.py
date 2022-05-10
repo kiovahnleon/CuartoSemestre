@@ -19,6 +19,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog as fd
+import tkinter as tk
 
 from pyparsing import col, line_end
 
@@ -55,30 +56,43 @@ class Analisis():
 
         #Frames#
         ################################################################
-        datos = Frame(root)  # Solicitud de información
+        datos1 = Frame(root)  # Solicitud de información
+        datos2 = Frame(root)  # Solicitud de información
+        datos3 = Frame(root)  # Solicitud de información
         sol = Frame(root)  # Solicitud de valores
         botones = Frame(root)  # Botones
-        datos.grid(column=0, row=0, padx=(50), pady=(10))
-        sol.grid(column=1, row=0, padx=(50), pady=(10))
-        botones.grid(column=0, row=2, padx=(50), pady=(10))
+        bottoms = Frame(root)  # Botones
+        botuns = Frame(root)  # Botones
+        datos1.grid(column=0, row=0, padx=(50), pady=(10))
+        datos2.grid(column=0, row=2, padx=(50), pady=(10))
+        datos3.grid(column=0, row=4, padx=(50), pady=(10))
+        sol.grid(column=0, row=3, padx=(50), pady=(10))
+        bottoms.grid(column=0, row=1, padx=(50), pady=(10))
+        botuns.grid(column=1, row=3, padx=(50), pady=(10))
+        botones.grid(column=0, row=5, padx=(50), pady=(10))
 
         #Campos#
         ################################################################
-        ttk.Label(datos, text="Tipo de simulación.",
+        ttk.Label(datos1, text="Tipo de simulación.",
                   justify=LEFT).grid(sticky=W, column=1, row=1)
-        ttk.Label(datos, text="Valor a calcular:", justify=LEFT).grid(
+        ttk.Label(datos2, text="Valor a calcular:", justify=LEFT).grid(
             sticky=W, column=1, row=2)
-        ttk.Label(datos, text="Solución", justify=LEFT).grid(
+        ttk.Label(datos3, text="Solución", justify=LEFT).grid(
             sticky=W, column=1, row=3)
 
         #Entradas#
         ################################################################
         # Tipo de simulación
-        self.forma = ttk.Combobox(
-            sol, width=10, state="readonly")
-        self.forma["values"] = ("Ecuación", "Random", "Numpy")
-        self.forma.grid(column=0, row=0)
-        self.forma.current()
+
+        opcion = IntVar()
+        self.forma = ttk.Radiobutton()
+        ttk.Radiobutton(bottoms, text="Ecuacion", variable=opcion,
+                        value=1).pack()
+
+        ttk.Radiobutton(bottoms, text="Random", variable=opcion,
+                        value=2).pack()
+        ttk.Radiobutton(bottoms, text="Numpy", variable=opcion,
+                        value=3).pack()
 
         # Tipo de probabilidad
         self.opciones = ttk.Combobox(
@@ -88,27 +102,43 @@ class Analisis():
         self.opciones.current()
 
         # Valor de cálculo
-        self.campoA = Entry(sol, width=6)
-        self.campoA.grid(column=1, row=1)
-        self.campoB = Entry(sol, width=6)
-        self.campoB.grid(column=2, row=1)
+        self.campoA = Entry(botuns, width=6)
+        self.campoA.pack()
+        self.campoB = Entry(botuns, width=6)
+        self.campoB.pack()
 
         # Mostrar la solución
-        self.solucion = Entry(sol, width=13)
-        self.solucion.grid(column=0, row=3)
+        self.solucion = Entry(botones, width=13, state="readonly")
+        self.solucion.pack()
 
         #Botones#
         ################################################################
-        ttk.Button(botones, text="Simular",
-                   command=lambda: self.simula()).grid(row=4, column=0)
-        ttk.Button(botones, text="Salir").grid(row=4, column=1)
+
+        self.buttonA = tk.Button(botones,
+                                 text="Simular",
+                                 bg="blue",
+                                 fg="white",
+                                 command=lambda:
+                                 self.simula())
+
+        self.buttonA.pack(side=LEFT, padx=0, pady=0)
+
+        self.buttonB = tk.Button(botones,
+                                 text="Salir",
+                                 bg="blue",
+                                 fg="white")
+
+        self.buttonB.pack(side=RIGHT, padx=15, pady=20)
+        self.root.mainloop()
 
         #Botones#
         ################################################################
         self.repeticiones = 30
 
     def abrir_archivo(self):
-        datos = []
+        datos1 = []
+        datos2 = []
+        datos3 = []
         # Solo se aceptan archivos .csv
         filetypes = [("Archivo CSV", "*.csv")]
         csv_path_file = fd.askopenfile(mode="r", filetypes=filetypes)
@@ -118,10 +148,15 @@ class Analisis():
                 if line_count == 0:
                     line_count += 1
                 else:
-                    datos.append(float(row))
+                    datos1.append(float(row))
+                    datos2.append(float(row))
+                    datos3.append(float(row))
+
         else:
             pass
-        self.data = datos
+        self.data = datos1
+        self.data = datos2
+        self.data = datos3
 
     def lectura2(self, combo2):
         switch = {"<": 1, "<=": 2, ">=": 3, ">": 4, "a<=x<=b": 5}
@@ -129,10 +164,11 @@ class Analisis():
 
     def simula(self):
         # Validación para el combo de tipo de simulación
-        if not self.forma.get():
-            messagebox.showerror(
-                "Error", "No se seleccionó un tipo de simulación.")
-            sys.exit(2)
+        #######arreglar###############
+       # if  self.forma.pack() :
+       #     messagebox.showerror(
+       #         "Error", "No se seleccionó un tipo de simulación.")
+       #     sys.exit(2)
 
         # Validación para el combo de tipo de problema para calcular
         if not self.opciones.get():
