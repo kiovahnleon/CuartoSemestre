@@ -5,7 +5,7 @@
 # a su vez, el cáculo correspondiente para determinar una
 # probabilidad dada.
 #
-#
+# Kiovahn Leon
 # May/03/22
 # .at.ite.dot.edu.dot.mx
 #
@@ -13,7 +13,8 @@ from ast import Lambda
 import re
 import sys
 import random
-from turtle import bgcolor, color
+import tkinter as tk
+from turtle import bgcolor, color, left
 import numpy as np
 from tkinter import *
 from tkinter import ttk
@@ -74,6 +75,17 @@ class Analisis():
         #Entradas#
         ################################################################
         # Tipo de simulación
+
+        self.opcion = tk.IntVar()
+        tk.Radiobutton(botones, text="Ecuación",
+                       variable=self.opcion, value=1).pack(side=left)
+        self.opcion = tk.IntVar()
+        tk.Radiobutton(botones, text="Random",
+                       variable=self.opcion, value=1).pack(side=left)
+        self.opcion = tk.IntVar()
+        tk.Radiobutton(botones, text="Numpy",
+                       variable=self.opcion, value=1).pack(side=left)
+
         self.forma = ttk.Combobox(
             sol, width=10, state="readonly")
         self.forma["values"] = ("Ecuación", "Random", "Numpy")

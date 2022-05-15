@@ -6,18 +6,22 @@ import { useState } from "react"
 
 function App() {
 
-  const [pacientes, setPacientes] = useState([])
+  const [pacientes, setPacientes] = useState([]);
+  const [paciente, setPaciente] = useState({});
+
 
   return (
     <div className="text-slate-800">
       <Cabecera />
-      <div className=" mt-3 md:flex p-5 w-full">
+      <div className=" mt-3 md:flex p-5 w-full ">
         <Formulario
           setPacientes={setPacientes}
           pacientes={pacientes}
+          paciente={paciente}
         />
         <Listado
           pacientes={pacientes}
+          setPaciente={setPaciente}
         />
       </div>
 

@@ -5,29 +5,34 @@
 # a su vez, el cáculo correspondiente para determinar una
 # probabilidad dada.
 #
-#
+# Pablo Palma Garcia
 # May/03/22
-# .at.ite.dot.edu.dot.mx
+# al20760555.at.ite.dot.edu.dot.mx
 #
 from ast import Lambda
+#from asyncio.windows_events import NULL
 import re
+import matplotlib.pyplot as plt
 import sys
 import random
-from turtle import bgcolor, color
+from turtle import bgcolor
 import numpy as np
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog as fd
+import tkinter as tk
 
 from pyparsing import col, line_end
 
+# Nuevo, parte de cambiar por get
 
-class Analisis():
+
+class Analisis(ttk.Frame):
     def __init__(self, root):
         self.root = root
         root.title("Cálculo de Probabilidad")
-        root.geometry("430x130")
+        root.geometry("490x420")
 
         #Menú#
         ################################################################
@@ -55,30 +60,48 @@ class Analisis():
 
         #Frames#
         ################################################################
-        datos = Frame(root)  # Solicitud de información
+        datos1 = Frame(root)  # Solicitud de información
+        datos2 = Frame(root)  # Solicitud de información
+        datos3 = Frame(root)  # Solicitud de información
         sol = Frame(root)  # Solicitud de valores
         botones = Frame(root)  # Botones
-        datos.grid(column=0, row=0, padx=(50), pady=(10))
-        sol.grid(column=1, row=0, padx=(50), pady=(10))
-        botones.grid(column=0, row=2, padx=(50), pady=(10))
+        bottoms = Frame(root)  # Botones
+        botuns = Frame(root)  # Botones
+        bots = Frame(root)
+        botz = Frame(root)
+        bot = Frame(root)
+        datos1.grid(column=0, row=0, padx=(50), pady=(10))
+        datos2.grid(column=0, row=2, padx=(50), pady=(10))
+        datos3.grid(column=0, row=4, padx=(50), pady=(10))
+        sol.grid(column=0, row=3, padx=(50), pady=(10))
+        bottoms.grid(column=0, row=1, padx=(50), pady=(10))
+        botuns.grid(column=1, row=3, padx=(50), pady=(10))
+        botones.grid(column=0, row=5, padx=(50), pady=(10))
+        bot.grid(column=1, row=0, padx=(50), pady=(10))
+        bots.grid(column=1, row=1, padx=(50), pady=(10))
+        botz.grid(column=1, row=2, padx=(50), pady=(10))
 
         #Campos#
         ################################################################
-        ttk.Label(datos, text="Tipo de simulación.",
+        ttk.Label(datos1, text="Tipo de simulación.",
                   justify=LEFT).grid(sticky=W, column=1, row=1)
-        ttk.Label(datos, text="Valor a calcular:", justify=LEFT).grid(
+        ttk.Label(datos2, text="Valor a calcular:", justify=LEFT).grid(
             sticky=W, column=1, row=2)
-        ttk.Label(datos, text="Solución", justify=LEFT).grid(
+        ttk.Label(datos3, text="Solución", justify=LEFT).grid(
             sticky=W, column=1, row=3)
 
         #Entradas#
         ################################################################
         # Tipo de simulación
-        self.forma = ttk.Combobox(
-            sol, width=10, state="readonly")
-        self.forma["values"] = ("Ecuación", "Random", "Numpy")
-        self.forma.grid(column=0, row=0)
-        self.forma.current()
+
+        self.opcion = IntVar()
+
+        self.forma1 = ttk.Radiobutton(bottoms, text="Ecuacion", variable=self.opcion,
+                                      value=1).pack()
+        self.forma2 = ttk.Radiobutton(bottoms, text="Random", variable=self.opcion,
+                                      value=2, ).pack()
+        self.forma3 = ttk.Radiobutton(bottoms, text="Numpy", variable=self.opcion,
+                                      value=3, ).pack()
 
         # Tipo de probabilidad
         self.opciones = ttk.Combobox(
@@ -87,29 +110,66 @@ class Analisis():
         self.opciones.grid(column=0, row=1)
         self.opciones.current()
 
+        self.repeticiones = 30
+
         # Valor de cálculo
-        self.campoA = Entry(sol, width=6)
-        self.campoA.grid(column=1, row=1)
-        self.campoB = Entry(sol, width=6)
-        self.campoB.grid(column=2, row=1)
+
+        ttk.Label(bot, text="Introduzca si desea Media y Desviacion",
+                  justify=CENTER).pack()
+
+        ttk.Label(botuns, text="A",
+                  justify=LEFT).pack()
+        self.campoA = Entry(botuns, width=6)
+        self.campoA.pack()
+
+        ttk.Label(botuns, text="B",
+                  justify=LEFT).pack()
+        self.campoB = Entry(botuns, width=6)
+        self.campoB.pack()
+
+        # Eleccion
+        ttk.Label(bots, text="Media",
+                  justify=LEFT).pack()
+        self.bots = Entry(bots, width=6)
+        self.bots.pack()
+
+        ttk.Label(botz, text="Desviacion",
+                  justify=LEFT).pack()
+        self.botz = Entry(botz, width=6)
+        self.botz.pack()
 
         # Mostrar la solución
-        self.solucion = Entry(sol, width=13)
-        self.solucion.grid(column=0, row=3)
+        self.solucion = Entry(botones, width=13, state="readonly")
+        self.solucion.pack()
 
         #Botones#
         ################################################################
-        ttk.Button(botones, text="Simular",
-                   command=lambda: self.simula()).grid(row=4, column=0)
-        ttk.Button(botones, text="Salir").grid(row=4, column=1)
+
+        self.buttonA = tk.Button(botones,
+                                 text="Simular",
+                                 bg="blue",
+                                 fg="white",
+                                 command=lambda:
+                                 self.simula())
+
+        self.buttonA.pack(side=LEFT, padx=0, pady=0)
+
+        self.buttonB = tk.Button(botones,
+                                 text="Salir",
+                                 bg="blue",
+                                 fg="white")
+
+        self.buttonB.pack(side=RIGHT, padx=15, pady=20)
+        self.root.mainloop()
 
         #Botones#
         ################################################################
-        self.repeticiones = 30
 
     def abrir_archivo(self):
         datos = []
+
         # Solo se aceptan archivos .csv
+        # ,('Archivo JPG','*.jpg')   !]!
         filetypes = [("Archivo CSV", "*.csv")]
         csv_path_file = fd.askopenfile(mode="r", filetypes=filetypes)
         if csv_path_file is not None:
@@ -119,42 +179,66 @@ class Analisis():
                     line_count += 1
                 else:
                     datos.append(float(row))
+
         else:
             pass
         self.data = datos
 
+################################################
     def lectura1(self, combo1):
-        switch = {"Ecuación": 1, "Random": 2, "Numpy": 3}
+        switch = {"Ecuacion": 1, "Random": 2, "Numpy": 3}
         return switch.get(combo1, "e")
+################################################
 
     def lectura2(self, combo2):
         switch = {"<": 1, "<=": 2, ">=": 3, ">": 4, "a<=x<=b": 5}
         return switch.get(combo2, "e")
 
+#############################################################
     def valores_normales(self, opcion):
-        promedio = np.average(self.data)
-        #self.solucion.delete(0, "end")
-        #self.solucion.insert(0, promedio)
-        desv = np.std(self.data)
+        valores = []  # Aqui se almacenara la solucion
+        try:
+            promedio = float(self.bots.get())
+        except:
+            promedio = np.average(self.data)
+
+        try:
+            desv = float(self.botz.get())
+        except:
+            desv = np.average(self.data)
+
+        # self.solucion.delete(0,"end")
+        # self.solucion.insert(0,promedio)
+
+        print(promedio, desv)
+
+       # promedio1 = np.average(self.data1)
+       # desv1 = np.std(self.data1)
+       # promedio2 = np.average(self.data2)
+       # desv2 = np.std(self.data2)
+       # promedio3 = np.average(self.data3)
+       # desv3 = np.std(self.data3)
+
+       # CALCULOSSSSSSSSSSSSSSSSSSSSSS
         if opcion == 1:
-            valores = []  # Almacena la solución.
             for i in range(self.repeticiones):
                 suma = 0
                 for j in range(12):
                     suma += random.random()
-                x = promedio+desv*(suma-6)
+                x = promedio + desv * (suma-6)
                 valores.append(x)
         elif opcion == 2:
-            valores = []  # Almacena la solución.
             for i in range(self.repeticiones):
                 valores.append(random.gauss(promedio, desv))
         else:
             valores = np.random.normal(promedio, desv, self.repeticiones)
-        return valores
+        return (valores)
+#######################################################
 
     def simula(self):
         # Validación para el combo de tipo de simulación
-        if not self.forma.get():
+        #######arreglar###############
+        if not self.opcion.get():
             messagebox.showerror(
                 "Error", "No se seleccionó un tipo de simulación.")
             sys.exit(2)
@@ -177,47 +261,60 @@ class Analisis():
                 "Error", "Debe indicar los valores por calcular")
             sys.exit(2)
 
-        metodo_simular = self.lectura1(self.forma.get())
-        tipo_problema = self.lectura2(self.opciones.get())
+##############################
+        metodo_simular = self.lectura1(self.opcion.get())
 
+        tipo_problema = self.lectura2(self.opciones.get())
         if tipo_problema == 5:
-            # Validación para el campo a <= x <= b
+            # validacion para el campo a<x<b
             try:
                 valor_final = float(self.campoB.get())
                 if valor_final <= 0:
                     messagebox.showerror(
-                        "Error", "La probabilidad no puede ser negativa.")
+                        "Error", "La probabilidad final no puede")
                     sys.exit(2)
             except ValueError:
-                messagebox.showerror("Error", "Debe declarar el valor final.")
+                messagebox.showerror("Error", "Debe declarar el valor final")
                 sys.exit(2)
             if valor_final <= valor_inicial:
                 messagebox.showerror(
-                    "Error", "No se puede realizar el cálculo.")
+                    "Error", "No es posible realizar el calculo")
                 sys.exit(2)
-
-        # Valores de acuerdo a la distribución normal.
+        #
+        # Valores de acuerdo a la distribucion normal
         valores = self.valores_normales(metodo_simular)
+
         suma = 0
-        for i in valores:
+        for j in valores:
             if tipo_problema == 1:
-                if i < valor_inicial:
+                if j < valor_inicial:
                     suma += 1
             elif tipo_problema == 2:
-                if i <= valor_inicial:
+                if j <= valor_inicial:
                     suma += 1
             elif tipo_problema == 3:
-                if i > valor_final:
+                if j > valor_inicial:
                     suma += 1
             elif tipo_problema == 4:
-                if i >= valor_inicial:
+                if j >= valor_inicial:
                     suma += 1
             else:
-                if i <= valor_final and i >= valor_inicial:
+                if j <= valor_final and j >= valor_inicial:
                     suma += 1
+
         probabilidad = round((suma/self.repeticiones)*100, 2)
-        self.solucion.delete(0, "end")
-        self.solucion.insert(0, probabilidad)
+
+        re = StringVar()
+        re.set(str(probabilidad))
+        self.solucion.config(textvariable=re)
+
+        fig = plt.figure(figsize=(10, 7))
+
+        # Creating plot
+        plt.boxplot(valores)
+
+        # show plot
+        plt.show()
 
 
 def main():

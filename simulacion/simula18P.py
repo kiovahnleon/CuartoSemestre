@@ -117,16 +117,16 @@ class Analisis():
         self.buttonA = tk.Button(botones,
                                  text="Simular",
                                  bg="blue",
-                                 fg="white",
+                                 fg="blue",
                                  command=lambda:
                                  self.simula())
 
         self.buttonA.pack(side=LEFT, padx=0, pady=0)
 
-        self.buttonB = tk.Button(botones,
+        self.buttonB = tk.Button(botones, command=root.quit,
                                  text="Salir",
                                  bg="blue",
-                                 fg="white")
+                                 fg="blue")
 
         self.buttonB.pack(side=RIGHT, padx=15, pady=20)
         self.root.mainloop()
