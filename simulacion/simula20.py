@@ -2,12 +2,12 @@
 # -*-coding: utf-8 -*-
 # Graficacion Runge-Kutta empleando Matplotlib
 #
-#
 # May/03/22
 # .at.ite.dot.edu.dot.mx
 #
-from socket import if_nameindex
+from logging import root
 from turtle import left
+from matplotlib.pyplot import draw
 import numpy as np
 from tkinter import *
 from tkinter import ttk
@@ -43,11 +43,11 @@ class Graficar():
         botones = Frame(root, height=2, bd=1, relief=SUNKEN)
         botones.pack(fill=X, padx=5, pady=5)
         ttk.Button(botones, text='Graficar',
-                   command=lambda: self.plotP()).grid(row=4, column=0)
+                   command=lambda: self.plot()).grid(row=4, column=0)
         ttk.Button(botones, text='Salir',
                    command=root.quit).grid(row=4, column=1)
 
-    def plotP(self):
+    def plot(self):
         # Primero, se crea la figura contenedora
         fig = Figure(figsize=(5, 5), dpi=100)
         # Se crea el intervalo
@@ -59,9 +59,9 @@ class Graficar():
         # se grafica
         plot1.plot(x, y)
         # se añade a Tkinter como un elemneto Canvas
-        #canvas = FigureCanvasTkAgg(fig, self.root)
-        # canvas.draw()
-        # canvas.get_tk_widget().pack
+        canvas = FigureCanvasTkAgg(fig, self.root)
+        canvas.draw()
+        canvas.get_tk_widget().pack()
 
 
 def main():

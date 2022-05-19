@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Pacientes from './Pacientes';
 
-const Formulario = ({ pacientes, setPacientes, paciente }) => {
+const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
     //TIP Definir el estado para el nombre
     const [nombre, setNombre] = useState('');
@@ -38,15 +38,28 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
         //TIP se coloca el error en falso para indicar que todos los campos estan llenos
         setError(false)
 
-        const objetoPacientes = {
+        const objetoPaciente = {
             nombre,
             email,
             sintomas,
             date,
-            id: generarID()
+            //id: generarID()
         }
 
-        setPacientes([...pacientes, objetoPacientes]);
+        if (paciente.id) {
+            //Actualizamos pacientes
+            objetoPaciente.id = paciente.id
+            const pacientesActualizados = pacientes.map(reemplazo => reemplazo.id === paciente.id ? objetoPaciente : reemplazo);
+            setPacientes(pacientesActualizados)
+            setPaciente({});
+
+        } else {
+            //Agregamos Paciente
+            objetoPaciente.id = generarID()
+            setPacientes([...pacientes, objetoPaciente]);
+        }
+
+
         limpiarDatos();
     })
 
@@ -83,7 +96,7 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
                         value={date} onChange={(e) => setDate(e.target.value)} />
                 </div>
                 <div className='mb-3'>
-                    <button type="submit" id='submit' className='bg-gradient-to-r from-purple-500 to-blue-500 hover:from-blue-500 hover:to-purple-500 p-2 rounded-md font-extrabold text-white block w-full'>Enviar</button>
+                    <input type="submit" id='submit' className='bg-gradient-to-r from-purple-500 to-blue-500 hover:from-blue-500 hover:to-purple-500 p-2 rounded-md font-extrabold text-white block w-full' value={paciente.id ? 'Actualizar paciente' : 'Agregar paciente'}></input>
                 </div>
 
 
