@@ -3,7 +3,6 @@
 const Pacientes = ({ paciente, setPaciente, eliminarPaciente }) => {
 
     const handleEliminar = () => {
-        console.log('eliminando...', id);
         const respuesta = confirm('La neta lo quieres eliminar?')
         if (respuesta) {
             eliminarPaciente(paciente.id);

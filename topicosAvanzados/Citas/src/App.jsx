@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   const eliminarPaciente = (id) => {
-    console.log('Eliminando paciente: ', id);
+    console.log('Eliminando paciente: ' + id);
     const pacientesActualizados = pacientes.filter(reemplazo => reemplazo.id !== id);
     setPacientes(pacientesActualizados);
   };
