@@ -65,20 +65,20 @@ class Analisis(ttk.Frame):
         datos2 = Frame(root)  # Solicitud de información
         datos3 = Frame(root)  # Solicitud de información
         sol = Frame(root)  # Solicitud de valores
-        botonSimular = Frame(root)  # Botones
-        botonSalir = Frame(root)  # Botones
-        botuns = Frame(root)  # Botones
+        botonSol = Frame(root)  # Botones
+        botonOpciones = Frame(root)  # Botones
+        botonAB = Frame(root)  # Botones
         botonMedia = Frame(root)
         botonDesv = Frame(root)
-        bot = Frame(root)
+        botonModT = Frame(root)
         datos1.grid(column=0, row=0, padx=(50), pady=(10))
         datos2.grid(column=0, row=2, padx=(50), pady=(10))
         datos3.grid(column=0, row=4, padx=(50), pady=(10))
         sol.grid(column=0, row=3, padx=(50), pady=(10))
-        botonSalir.grid(column=0, row=1, padx=(50), pady=(10))
-        botuns.grid(column=1, row=3, padx=(50), pady=(10))
-        botonSimular.grid(column=0, row=5, padx=(50), pady=(10))
-        bot.grid(column=1, row=0, padx=(50), pady=(10))
+        botonOpciones.grid(column=0, row=1, padx=(50), pady=(10))
+        botonAB.grid(column=1, row=3, padx=(50), pady=(10))
+        botonSol.grid(column=0, row=5, padx=(50), pady=(10))
+        botonModT.grid(column=1, row=0, padx=(50), pady=(10))
         botonMedia.grid(column=1, row=1, padx=(50), pady=(10))
         botonDesv.grid(column=1, row=2, padx=(50), pady=(10))
 
@@ -97,11 +97,11 @@ class Analisis(ttk.Frame):
 
         self.opcion = IntVar()
 
-        self.forma1 = ttk.Radiobutton(botonSalir, text="Ecuacion", variable=self.opcion,
+        self.forma1 = ttk.Radiobutton(botonOpciones, text="Ecuacion", variable=self.opcion,
                                       value=1).pack()
-        self.forma2 = ttk.Radiobutton(botonSalir, text="Random", variable=self.opcion,
+        self.forma2 = ttk.Radiobutton(botonOpciones, text="Random", variable=self.opcion,
                                       value=2, ).pack()
-        self.forma3 = ttk.Radiobutton(botonSalir, text="Numpy", variable=self.opcion,
+        self.forma3 = ttk.Radiobutton(botonOpciones, text="Numpy", variable=self.opcion,
                                       value=3, ).pack()
 
         # Tipo de probabilidad
@@ -115,17 +115,17 @@ class Analisis(ttk.Frame):
 
         # Valor de cálculo
 
-        ttk.Label(bot, text="Modifique si desea la Media y Desviacion",
+        ttk.Label(botonModT, text="Modifique si desea la Media y Desviacion",
                   justify=CENTER).pack()
 
-        ttk.Label(botuns, text="A",
+        ttk.Label(botonAB, text="A",
                   justify=LEFT).pack()
-        self.campoA = Entry(botuns, width=6)
+        self.campoA = Entry(botonAB, width=6)
         self.campoA.pack()
 
-        ttk.Label(botuns, text="B",
+        ttk.Label(botonAB, text="B",
                   justify=LEFT).pack()
-        self.campoB = Entry(botuns, width=6)
+        self.campoB = Entry(botonAB, width=6)
         self.campoB.pack()
 
         # Eleccion
@@ -140,13 +140,13 @@ class Analisis(ttk.Frame):
         self.botz.pack()
 
         # Mostrar la solución
-        self.solucion = Entry(botonSimular, width=13, state="readonly")
+        self.solucion = Entry(botonSol, width=13, state="readonly")
         self.solucion.pack()
 
         #Botones#
         ################################################################
 
-        self.buttonA = tk.Button(botonSimular,
+        self.buttonA = tk.Button(botonSol,
                                  text="Simular",
                                  bg="blue",
                                  fg="white",
@@ -155,7 +155,7 @@ class Analisis(ttk.Frame):
 
         self.buttonA.pack(side=LEFT, padx=0, pady=0)
 
-        self.buttonB = tk.Button(botonSimular,
+        self.buttonB = tk.Button(botonSol,
                                  text="Salir",
                                  bg="blue",
                                  fg="white", command=root.quit)
@@ -225,7 +225,7 @@ class Analisis(ttk.Frame):
        # promedio3 = np.average(self.data3)
        # desv3 = np.std(self.data3)
 
-       # CALCULOSSSSSSSSSSSSSSSSSSSSSS
+       # CALCULOS
         if opcion == 1:
             for i in range(self.repeticiones):
                 suma = 0
@@ -244,7 +244,6 @@ class Analisis(ttk.Frame):
 
     def simula(self):
         # Validación para el combo de tipo de simulación
-        #######arreglar###############
         if not self.opcion.get():
             messagebox.showerror(
                 "Error", "No se seleccionó un tipo de simulación.")
