@@ -148,7 +148,7 @@ class Analisis(ttk.Frame):
 
         self.buttonA = tk.Button(botonSol,
                                  text="Simular",
-                                 bg="blue",
+                                 bg="#138ef2",
                                  fg="white",
                                  command=lambda:
                                  self.simula())
@@ -157,7 +157,7 @@ class Analisis(ttk.Frame):
 
         self.buttonB = tk.Button(botonSol,
                                  text="Salir",
-                                 bg="blue",
+                                 bg="#138ef2",
                                  fg="white", command=root.quit)
 
         self.buttonB.pack(side=RIGHT, padx=15, pady=20)
