@@ -9,8 +9,12 @@
 # May/03/22
 # al.at.ite.dot.edu.dot.mx
 #
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+from tkinter import filedialog as fd
+import tkinter as tk
 from ast import Lambda
-#from asyncio.windows_events import NULL
 import re
 import matplotlib.pyplot as plt
 import sys
@@ -18,12 +22,6 @@ import random
 from turtle import bgcolor
 from numpy import mean, array
 import numpy as np
-from tkinter import *
-from tkinter import ttk
-from tkinter import messagebox
-from tkinter import filedialog as fd
-import tkinter as tk
-
 from pyparsing import col, line_end
 
 # Nuevo, parte de cambiar por get
@@ -189,9 +187,6 @@ class Analisis(ttk.Frame):
         self.botonMedia.insert(0, round(mean(self.datos), 3))
         self.botonDesv.insert(0, round(float(str(self.st_dev)), 3))
 
-    # def media(self):
-    #    print(self.datos)
-
 ################################################
     def lectura1(self, combo1):
         switch = {"Ecuacion": 1, "Random": 2, "Numpy": 3}
@@ -257,12 +252,12 @@ class Analisis(ttk.Frame):
                 "Error", "Debe indicar los valores por calcular")
             sys.exit(2)
 
-##############################
+#####################################
         metodo_simular = self.lectura1(self.opcion.get())
 
         tipo_problema = self.lectura2(self.opciones.get())
         if tipo_problema == 5:
-            # validacion para el campo a<x<b
+            # Validacion para el campo a<x<b
             try:
                 valor_final = float(self.campoB.get())
                 if valor_final <= 0:
@@ -276,7 +271,7 @@ class Analisis(ttk.Frame):
                 messagebox.showerror(
                     "Error", "No es posible realizar el calculo")
                 sys.exit(2)
-        #
+
         # Valores de acuerdo a la distribucion normal
         valores = self.valores_normales(metodo_simular)
 
