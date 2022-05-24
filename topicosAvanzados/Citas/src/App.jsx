@@ -25,9 +25,9 @@ function App() {
 
 
   return (
-    <div className="text-slate-800">
+    <div className="text-slate-800 font-semibold">
       <Cabecera />
-      <div className=" mt-3 md:flex p-5 w-full ">
+      <div className=" mt-3 md:flex p-2 w-full">
         <Formulario
           setPacientes={setPacientes}
           pacientes={pacientes}

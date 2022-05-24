@@ -5,9 +5,9 @@
 # a su vez, el cáculo correspondiente para determinar una
 # probabilidad dada.
 #
-# Pablo Palma Garcia
+#
 # May/03/22
-# al20760555.at.ite.dot.edu.dot.mx
+# al.at.ite.dot.edu.dot.mx
 #
 from ast import Lambda
 #from asyncio.windows_events import NULL
@@ -33,7 +33,7 @@ class Analisis(ttk.Frame):
     def __init__(self, root):
         self.root = root
         root.title("Cálculo de Probabilidad")
-        root.geometry("490x420")
+        root.geometry("650x500")
 
         #Menú#
         ################################################################
@@ -98,11 +98,11 @@ class Analisis(ttk.Frame):
         self.opcion = IntVar()
 
         self.forma1 = ttk.Radiobutton(botonOpciones, text="Ecuacion", variable=self.opcion,
-                                      value=1).pack()
+                                      value=1).grid(column=0, row=0)
         self.forma2 = ttk.Radiobutton(botonOpciones, text="Random", variable=self.opcion,
-                                      value=2, ).pack()
+                                      value=2, ).grid(column=1, row=0)
         self.forma3 = ttk.Radiobutton(botonOpciones, text="Numpy", variable=self.opcion,
-                                      value=3, ).pack()
+                                      value=3, ).grid(column=2, row=0)
 
         # Tipo de probabilidad
         self.opciones = ttk.Combobox(
@@ -131,13 +131,13 @@ class Analisis(ttk.Frame):
         # Eleccion
         ttk.Label(botonMedia, text="Media",
                   justify=LEFT).pack()
-        self.bots = Entry(botonMedia, width=6)
-        self.bots.pack()
+        self.botonMedia = Entry(botonMedia, width=6)
+        self.botonMedia.pack()
 
         ttk.Label(botonDesv, text="Desviacion",
                   justify=LEFT).pack()
-        self.botz = Entry(botonDesv, width=6)
-        self.botz.pack()
+        self.botonDesv = Entry(botonDesv, width=6)
+        self.botonDesv.pack()
 
         # Mostrar la solución
         self.solucion = Entry(botonSol, width=13, state="readonly")
@@ -186,8 +186,8 @@ class Analisis(ttk.Frame):
             pass
         self.data = self.datos
 
-        self.bots.insert(0, round(mean(self.datos), 3))
-        self.botz.insert(0, round(float(str(self.st_dev)), 3))
+        self.botonMedia.insert(0, round(mean(self.datos), 3))
+        self.botonDesv.insert(0, round(float(str(self.st_dev)), 3))
 
     # def media(self):
     #    print(self.datos)
@@ -206,24 +206,14 @@ class Analisis(ttk.Frame):
     def valores_normales(self, opcion):
         valores = []  # Aqui se almacenara la solucion
         try:
-            promedio = float(self.bots.get())
+            promedio = float(self.botonMedia.get())
         except:
             promedio = np.average(self.data)
 
         try:
-            desv = float(self.botz.get())
+            desv = float(self.botonDesv.get())
         except:
             desv = np.average(self.data)
-
-        # self.solucion.delete(0,"end")
-        # self.solucion.insert(0,promedio)
-
-       # promedio1 = np.average(self.data1)
-       # desv1 = np.std(self.data1)
-       # promedio2 = np.average(self.data2)
-       # desv2 = np.std(self.data2)
-       # promedio3 = np.average(self.data3)
-       # desv3 = np.std(self.data3)
 
        # CALCULOS
         if opcion == 1:

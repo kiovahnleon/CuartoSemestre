@@ -3,7 +3,7 @@
 const Pacientes = ({ paciente, setPaciente, eliminarPaciente }) => {
 
     const handleEliminar = () => {
-        const respuesta = confirm('La neta lo quieres eliminar?')
+        const respuesta = confirm('seguro krnal?')
         if (respuesta) {
             eliminarPaciente(paciente.id);
         }
@@ -16,8 +16,8 @@ const Pacientes = ({ paciente, setPaciente, eliminarPaciente }) => {
             <p className='text-gray-600 font-bold'>Sintomas <span className='font-normal normal-case'>{paciente.sintomas}</span></p>
             <p className='text-gray-600 font-bold'>Fecha <span className='font-normal normal-case'>{paciente.date}</span></p>
             <div className="flex justify-evenly gap-4 mt-4 text-white">
-                <input type="button" value="Eliminar" className="p-2 w-full rounded-lg bg-[#EF3054] font-black hover:bg-[#c32542]" onClick={handleEliminar} />
-                <input type="button" value="Editar" className="p-2 w-full rounded-lg bg-[#fcb353] font-black hover:bg-[#f5a43b] hover: cursor-pointer" onClick={() => setPaciente(paciente)} />
+                <input type="button" value="Eliminar" className="p-2 w-full rounded-lg bg-[#023E8A] font-black hover:bg-[#023372]" onClick={handleEliminar} />
+                <input type="button" value="Editar" className="p-2 w-full rounded-lg bg-[#0077B6] font-black hover:bg-[#016ba3] hover: cursor-pointer" onClick={() => setPaciente(paciente)} />
             </div>
         </div>
     )

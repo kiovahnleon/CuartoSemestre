@@ -71,11 +71,12 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
     }
 
     return (
-        <div className='bg-[#8EBED2] mx-10 rounded-md p-10 mb-auto md:w-1/2 lg:w-2/5'>
+        <div className='bg-[#8EBED2] mx-3 rounded-md p-3 mb-2 md:w-1/2 lg:w-2/5 h-fit'>
             <h1 className='bg-[#2E86AB] p-2 text-center font-bold text-3xl mb-3 rounded-md text-white'>Formulario</h1>
+            <p className='text-xl text-center mt-5'>Registra <span className='font-bold text-[#2E86AB]'>paciente</span></p>
             <form className='' onSubmit={validaFormulario}>
-                {error && <p className='p-2 m-2 rounded-md text-center font-bold bg-red-400 text-white'>debes llenar todos los campos</p>}
-                <div className='mb-3'>
+                {error && <p className='p-2 m-2 rounded-md text-center font-bold bg-[#03045E] text-white'>Debes llenar todos los campos!</p>}
+                <div className='mb-3 mt-5'>
                     <label htmlFor="nombre">Nombre Paciente </label>
                     <input type="text" id='nombre' placeholder=' nombre' className='p-2 block rounded-md w-full mb-1'
                         value={nombre} onChange={(e) => setNombre(e.target.value)} />
@@ -96,7 +97,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
                         value={date} onChange={(e) => setDate(e.target.value)} />
                 </div>
                 <div className='mb-3'>
-                    <input type="submit" id='submit' className='bg-[#3C907A] hover:bg-[#265c4d] p-2 rounded-md font-extrabold text-white block w-full' value={paciente.id ? 'Actualizar paciente' : 'Agregar paciente'}></input>
+                    <input type="submit" id='submit' className='bg-[#00B4DB] hover:bg-[#009cbf] p-2 rounded-md font-extrabold text-white block w-full' value={paciente.id ? 'Actualizar paciente' : 'Agregar paciente'}></input>
                 </div>
 
 
